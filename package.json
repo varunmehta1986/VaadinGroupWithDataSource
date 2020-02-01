@@ -1,0 +1,6 @@
+{
+    "dependencies": {
+        "@vaadin/vaadin-radio-button": "^1.2.4",
+        "lit-element": "^2.2.1"
+    }
+}
