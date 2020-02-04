@@ -14,26 +14,25 @@ class VaadinRadiogroupDataSource extends LitElement {
         this.radioGroupItems = ["Milk", "Bananas", "Eggs"];
         this.updateComplete.then(() => {
             var radioGroup = this.shadowRoot.querySelector("vaadin-radio-group");
-            var radioGroupList = "";
+            //in case you want to have a default checked None option.
+            var radioGroupList = "<vaadin-radio-button value='None' checked>None</vaadin-radio-button>";
             for (let i = 0; i < this.radioGroupItems.length; i++) {
                 radioGroupList += "<vaadin-radio-button value = '" + this.radioGroupItems[i] + "'>" +
                     this.radioGroupItems[i] + "</vaadin-radio-button>";
             }
+            radioGroupList+= ""
             radioGroup.innerHTML += radioGroupList;
         });
     }
     render() {
         return html`
+
             <vaadin-radio-group theme="vertical" @value-changed= "${this.radioValueChanged}">
-                <vaadin-radio-button value="None">
-                    None
-                </vaadin-radio-button>
             </vaadin-radio-group>
         `;
     }
     radioValueChanged(e){
         this.selectedGrocery = e.target.value;
-        console.log(this.selectedGrocery);
     }
 }
 customElements.define("vaadin-radiogroup-datasource", VaadinRadiogroupDataSource);
